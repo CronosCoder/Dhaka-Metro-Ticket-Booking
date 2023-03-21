@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block tittle %}Success{% endblock tittle %}
+{% block bodyblock %}
+    <div class="mx-20 my-12 flex flex-col justify-center items-center">
+        <div class="w-[90px] h-[90px]"
+            style="background-image: url('{% static 'images/success.png' %}');background-size: cover;background-position: center;">
+        </div>
+        <h1 class="text-4xl text-[#15DE87] mt-3">Congratulations {{name}}</h1>
+        <h1 class="text-4xl mt-3">You have Successfully booked your ticket</h1>
+        <h1 class="text-4xl mt-3">Please Check your mail. We have sent your ticket on your mail</h1>
+        <h1 class="text-4xl mt-3">Thank you for being with Dhaka Metro Rail</h1>
+        <h1 class="text-4xl mt-3">Go to <a href="{% url 'dashboard'%}" class="text-[#15DE87]">Dashbord</a></h1>
+
+    </div>
+{% endblock bodyblock %}

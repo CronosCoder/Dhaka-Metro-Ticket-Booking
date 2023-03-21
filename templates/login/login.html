@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/fav.png'%}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Log In</title>
+</head>
+<body>
+    <div class="mx-20 my-12">  
+        {% for message in messages %}
+            <div id="messages" class="alert alert-error shadow-lg">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>{{message}}</span>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="grid grid-cols-2 gap-3">
+            <div class="px-10 w-[90%] mx-auto animate__animated animate__backInLeft">
+                <form class="grid my-32 grid-cols-1 gap-7" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <h1 class="text-center font-bold text-4xl text-[#15DE87]">Good to see you here</h1>
+                        <h1 class="text-center m-1  text-3xl text-[#15DE87]">Please Log in your account</h1>
+                    </div>
+                    <!-- <h1 class="text-3xl">Provide correct information</h1> -->
+                    {% if username %}
+                        <input
+                            class="p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none"
+                            type="text" name="username" value="{{username}}" id="" placeholder="Enter your username">
+                    {% else %}
+                        <input
+                        class="p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none"
+                        type="text" name="username" id="" placeholder="Enter your username">
+                    {% endif %}
+                    
+                    <input class=" p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="password" name="password" id="" placeholder="Password">
+                    <input class=" p-3 rounded-md text-white text-[16px] placeholder-[#15DE87] border-2 border-[#15DE87] bg-[#15DE87] outline-none" type="submit" id="" value="Log in">
+                    <h1 class="text-center text-[16px]">Don't have an account? <a href="{% url 'register' %}" class="text-[#15DE87]">Register</a> </h1>
+                </form>
+            </div>
+            <div class="bg-no-repeat animate__animated animate__backInRight "
+                style="background-image: url('{% static 'images/login.jpg' %}');background-size: cover;background-position: center;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

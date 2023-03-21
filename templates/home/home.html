@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block tittle %}Metro Rail{% endblock tittle %}
+
+{% block bodyblock %}
+    <div class="bg-no-repeat bg-bottom bg-cover min-h-screen"
+        style="background-image: url(https://i.ibb.co/HCf4G2L/backgroung.jpg);">
+        <div class="pl-[100px] pt-[100px]">
+            <h1 class="animate__animated animate__lightSpeedInRight mb-5 text-8xl text-[#2f3542] font-extrabold">Dhaka
+                Metro Rail</h1>
+            <p class="animate__animated animate__lightSpeedInLeft mb-5  text-4xl text-[#2f3542] font-bold">Travel with
+                security & reach your destination.</p>
+            <a href="{% url 'search' %}"><button class="btn inline-block mt-16 bg-[#2f3542] text-[#ffffff] anim-btn">
+                    Get Started
+                </button></a>
+        </div>
+    </div>
+{% endblock bodyblock %}

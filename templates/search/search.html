@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block tittle %}Search{% endblock tittle %}
+
+{% block bodyblock %}
+    <main class="w-100 lg:flex p-10">
+        <div class="w-100 lg:w-3/6 m-4">
+            <h1 class="text-[#5AE4A8] text-3xl mb-2">Hello Travelers</h1>
+            <h1 class="text-4xl font-bold mb-2">Welcome to explore the journey<br>full of joy and advantures</h1>
+            <h1 class="text-[#5AE4A8] text-3xl">Where are you going?</h1>
+            <form method="POST" class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:mt-14">
+                {% csrf_token %}
+                <select name="from" id="from"
+                    class="lg:p-3 p-1 border-[#5AE4A8] block rounded-md text-[#5AE4A8] border-2">
+                    <option id="from" selected>Select where want to start</option>
+                    {% for station in stations %}
+                        <option id="from">{{station.station_name}}</option>
+                    {% endfor %}
+                </select>
+                <select name="to" id="to" class="lg:p-3 p-1 rounded-md block border-[#5AE4A8] text-[#5AE4A8] border-2">
+                    <option id="to" selected>Select where want to reach</option>
+                    {% for station in stations %}
+                        <option id="from">{{station.station_name}}</option>
+                    {% endfor %}
+                </select>
+                <input name="date" type="date" class="lg:p-3 p-1 rounded-md block border-[#5AE4A8] text-[#5AE4A8] border-2">
+                <select name="seat" id="seat"
+                    class="lg:p-3 p-1 block rounded-md border-[#5AE4A8] text-[#5AE4A8] border-2">
+                    <option id="seat" selected>How many seats?</option>
+                    <option id="seat">1</option>
+                    <option id="seat">2</option>
+                    <option id="seat">3</option>
+                    <option id="seat">4</option>
+                    <option id="seat">5</option>
+                </select>
+                <select name="class" id="class"
+                    class="lg:p-3 p-1 block rounded-md border-[#5AE4A8] text-[#5AE4A8] border-2">
+                    <option id="class" selected>Choose your class</option>
+                    <option id="class">AC</option>
+                    <option id="class">Non AC</option>
+                    <option id="class">Standing</option>
+                </select>
+                <input name="age" id="age" type="number" placeholder="Enter your age"
+                    class="lg:p-3 p-1 block rounded-md border-[#5AE4A8] text-[#5AE4A8] border-2 outline-none
+                    placeholder-[#5AE4A8]">
+                <button type="submit" class="text-[#ffff] bg-[#5AE4A8] block text-center lg:p-3 p-1 col-span-2 rounded-md">Search
+                    Train</button>
+            </form>
+        </div>
+        <div class="w-3/6 ml-10 flex justify-center">
+            <div class="w-4/5 h-full rounded-md hover:scale-75 translate-x-4 duration-300"
+                style="background-image: url('{% static 'images/map.png' %}');"></div>
+        </div>
+
+    </main>
+{% endblock bodyblock %}

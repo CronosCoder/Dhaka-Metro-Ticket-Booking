@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block tittle %}Payment{% endblock tittle %}
+{% block bodyblock %}
+    <div class="mx-20 my-10">
+        <div class="grid grid-cols-2">
+            <div class="mb-14">
+                <h1 class="text-4xl font-bold">Payment Details</h1>
+                <div class="grid grid-cols-3">
+                    <div class="mt-10">
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2 mt-10">Payment Type</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">Ticket Type</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">Total Ticket</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">Ticket Price</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">Service Charge</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">Discount</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl font-semibold mb-3">Total Cost</h1>
+                    </div>
+                    <div class="mt-10 text-center">
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2 mt-10">:</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">:</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">:</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">:</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">:</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">:</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl font-semibold mb-3">:</h1>
+                    </div>
+                    <div class="mt-10 pl-8">
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2 mt-10">Card</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">{{ticket.coach}}</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">{{ticket.tickets}}</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">{{ticket.cost}}</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">40</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl mb-2">00</h1>
+                        <h1 class="text-[#5AE4A8] text-2xl font-semibold mb-3">{{ticket.total_cost}}</h1>
+                    </div>
+                    <a href="{% url 'success' %}"
+                        class="bg-[#5AE4A8] mr-24 col-span-3 mb-12 mt-5 inline-block  text-gray-50 text-center py-2 rounded-md">Make
+                        Payment</a>
+                </div>
+            </div>
+            <div
+                style="background-image: url('{% static 'images/payment.jpg' %}');background-size:cover;background-position: center;">
+            </div>
+        </div>
+
+    </div>
+{% endblock bodyblock %}
+    

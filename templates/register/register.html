@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/fav.png'%}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Register</title>
+</head>
+<body>
+    <div class="mx-20 my-12">
+        <div class="grid grid-cols-2 gap-3">
+            <div class="bg-no-repeat animate__animated animate__backInLeft"
+                style="background-image: url('{% static 'images/register.jpg' %}');background-size: contain;background-position: center;">
+            </div>
+            <div class="m-10 animate__animated animate__backInRight ">
+                {% for message in messages %}
+                    <div id="messages" class="alert alert-error shadow-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span>{{message}}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+                <h1 class="text-4xl font-bold mt-8 mb-8">Register for an account</h1>
+                <form method='POST' class="grid grid-cols-2 gap-3">
+                    {% csrf_token %}
+                    <input class="col-span-2 p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="text" name="username" id="" placeholder="Enter your username">
+                    <input class=" p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="text" name="fname" id="" placeholder="First Name">
+                    <input class=" p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="text" name="lname" id="" placeholder="Last Name">
+                    <input class="col-span-2 p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="email" name="email" id="" placeholder="Enter your email">
+                    <input class=" p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="password" name="password" id="" placeholder="Password">
+                    <input class=" p-3 rounded-md text-[#15DE87] placeholder-[#15DE87] border-2 border-[#15DE87] outline-none" type="password" name="re-password" id="" placeholder="Confirm Password">
+                    <h1 class="text-[16px] col-span-2">By creating an account you are agreeing to our <span class="text-[#15DE87]">Privacy Policy</span> and <span class="text-[#15DE87]">Electronics Communication Policy.</span> We ensure that we will not share your information. </h1>
+                    <button type='submit' class="col-span-2 bg-[#15DE87] text-white text-2xl rounded-md py-3">Register</button>
+                </form>
+                <h1 class="text-center m-3 text-[16px]">Already have an account?<a href="{% url 'login' %}" class="text-[#15DE87]"> Login</a></h1>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

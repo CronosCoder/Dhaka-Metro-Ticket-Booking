@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block tittle %}Train Book{% endblock tittle %}
+
+{% block bodyblock %}
+    <div class="mx-20 my-14">
+        <h1 class="text-4xl font-bold">Book Your Metro Rail Ticket</h1>
+        <div class="grid lg:grid-cols-6 mt-5 gap-3">
+            <div class="bg-[#D9FFEE] col-span-4 rounded-md py-5">
+                <h1 class="text-center text-2xl">You are going to</h1>
+                <div class="grid grid-cols-3">
+                    <div class="flex flex-col justify-center items-center">
+                        <div>
+                            <h1 class="text-4xl font-bold mb-2">{{trip.from_station}}</h1>
+                            <h1 class="text-2xl mb-1">Seats : {{trip.seat}}</h1>
+                            <h1 class="text-2xl">Class : {{trip.seat_class}}</h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center text-gray-700 font-bold">>====================></div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div>
+                            <h1 class="text-4xl font-bold mb-2">{{trip.to_station}}</h1>
+                            <h1 class="text-2xl mb-1">Date : {{trip.date}}</h1>
+                            <h1 class="text-2xl">Fare : ${{trip.fare}}</h1>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-span-2 rounded-md"
+                style="background-image: url(https://source.unsplash.com/800x500/?town,urban);background-size:cover;">
+            </div>
+        </div>
+        <h1 class="text-center text-2xl my-5">Available Trains for your trip</h1>
+        <div>
+            {% if trains|length > 0 %}
+                {% for train in trains %}
+                    <div class="bg-[#D9FFEE] pl-12 py-8 mb-5 rounded-md">
+                        <h1 class="text-3xl font-bold mb-4">{{train.name}}</h1>
+                        <div class="grid grid-cols-6">
+                            <div>
+                                <h1>From</h1>
+                                <h1 class="text-2xl font-bold">{{train.from_station}}</h1>
+                            </div>
+                            <div>
+                                <h1>To</h1>
+                                <h1 class="text-2xl font-bold">{{train.to_station}}</h1>
+                            </div>
+                            <div>
+                                <h1>Departure</h1>
+                                <h1 class="text-2xl font-bold">{{train.start}}</h1>
+                            </div>
+                            <div>
+                                <h1>Arrival</h1>
+                                <h1 class="text-2xl font-bold">{{train.finish}}</h1>
+                            </div>
+                            <div>
+                                <h1>Available Seats</h1>
+                                <h1 class="text-2xl font-bold">{{train.seat}}</h1>
+                            </div>
+                            <div>
+                                <a href="{% url 'book-train' train.id %}" class="bg-[#5AE4A8] px-3 py-2 rounded-md text-gray-50 cursor-pointer">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-error shadow-lg">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        <span>Sorry! No train found on your desire date {{trip.date}}. Try for another day.</span>
+                    </div>
+                </div>
+            {% endif %}
+            
+            
+        </div>
+    </div>
+{% endblock bodyblock %}

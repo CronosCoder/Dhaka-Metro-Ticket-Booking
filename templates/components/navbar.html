@@ -1,0 +1,33 @@
+{% load static %}
+<div class="navbar px-10 bg-white drop-shadow-lg">
+    <div class="flex-1">
+        <a href="{% url 'home' %}"><img class="w-20" src="{% static 'images/logo.png' %}" alt=""></a>
+    </div>
+    <div class="flex-none gap-2">
+        <div class="form-control ml-5">
+           <a href="{% url 'dashboard' %}"><button class="font-medium text-[#5AE4A8]">Dashbord</button></a>
+        </div>
+        <div class="form-control ml-5">
+           <a href="{% url 'train_info'%}"><button class="font-medium text-[#5AE4A8]">Train Information</button></a>
+        </div>
+        <div class="form-control ml-5">
+            <a href="{% url 'about_us'%}"><button class="font-medium text-[#5AE4A8]">About Us</button></a>
+        </div>
+        <div class="form-control ml-5">
+            <a href="{% url 'contact_us' %}"><button class="font-medium text-[#5AE4A8]">Contact Us</button></a>
+        </div>
+        <div class="dropdown dropdown-end ml-5">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                    <img
+                        src="https://scontent.fdac5-2.fna.fbcdn.net/v/t1.6435-9/67398341_2332188563714903_1728208588377161728_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_eui2=AeE4buYaHypxwe5s-dlR1cjQ_biWHXwwnED9uJYdfDCcQEH-3U7099CaxZAnu0kguuxuAybf8p01p64Wu-CclfsA&_nc_ohc=EDi5DyFjtsMAX8PGsoK&_nc_ht=scontent.fdac5-2.fna&oh=00_AfDpLm4ym307k7PZh1vDWEVNFcjuGWCjQZzVhXLffMvpuQ&oe=641E7736" />
+                </div>
+            </label>
+            <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                <li><a href="#" class="text-[#5AE4A8]">{{request.user}}</a></li>
+                <li><a href="{% url 'profile' %}" class="text-[#5AE4A8]">Settings</a></li>
+                <li><a href="{% url 'logout' %}" class="text-[#5AE4A8]">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

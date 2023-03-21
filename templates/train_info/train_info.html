@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block tittle %}Train Info{% endblock tittle %}
+
+{% block bodyblock %}
+    {% for train in all_train %}
+    <div class="card_body flex items-center justify-center pt-6 pb-6"
+        style="background: rgb(143,255,206);
+    background: linear-gradient(63deg, rgba(143,255,206,0.5970763305322129) 0%, rgba(46,245,116,0.6530987394957983) 100%);"></br>
+        <div class="card rounded-5 gap-2" style="width: 45rem;">
+            <div class="card-body rounded-xl backdrop-blur-xl bg-white/50">
+                <h4 class="card-title text-4xl">{{train.name}} {{train.trip_type}}</h4>
+                <table class="table">
+                    <thead>
+                        <tr style="background-color:#e5ecf6e1;">
+                            <th scope="col font-bold ">From</th>
+                            <th scope="col font-bold ">TO</th>
+                            <th scope="col font-bold ">Ac Seats</th>
+                            <th scope="col font-bold ">Non Ac Seats</th>
+                            <th scope="col font-bold ">Standing Seats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: #fffffff6;">
+                            <td class="text-2xl "><b>{{train.from_station}}</b></td>
+                            <td class="text-2xl "><b>{{train.to_station}}</b></td>
+                            <td class="text-2xl "><b>20</b></td>
+                            <td class="text-2xl "><b>20</b></td>
+                            <td class="text-2xl "><b>10</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="time flex items-center justify-between px-2 pr-4">
+                    <h5 class="text-2xl"><b>Departure Time : {{train.start}}</b></h5>
+                    <h5 class="text-2xl"><b>Arrival Time : {{train.finish}}</b></h5>
+                </div>
+                <h3 class="px-2 text-center mt-5 text-[18px]"><b>Ticket Price ( Per Seat & Per Station )</b></h3>
+                <div class="ticket_categories flex items-center justify-between p-2 bg-[#e5ecf6e1] rounded-md">
+                    <h4 class="text-2xl"><b>AC : 20 Taka</b></h4>
+                    <h4 class="text-2xl"><b>Non-AC : 15 Taka</b></h4>
+                    <h4 class="text-2xl"><b>Standing : 10 Taka</b></h4>
+                </div>
+                <a href="{% url 'routes' %}" class="bg-[#84FAB0] text-center hover:bg-green-600 hover:text-white text-black p-3 rounded-md inline-block mt-3 font-semibold">View Routes</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

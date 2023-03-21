@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} 
+{% load static %}
+{% block tittle %} Contact Us {% endblock %}
+{% block bodyblock %}
+<div class="hero min-h-screen" style="
+    background-image: url(https://www.bproperty.com/blog/wp-content/uploads/2021/10/shutterstock_2032850459.jpg);
+  ">
+    <div class="hero-overlay bg-opacity-80"></div>
+    <div class="hero-content text-center text-neutral-content">
+        <div class="w-md">
+            <h1 class="mb-5 text-5xl font-bold text-teal-400 animate__animated animate__fadeInDown">
+                Contact Us
+            </h1>
+            <p class="mb-10 text-[20px]">
+                We love hearing from our users! If you have any questions, comments, or
+                feedback about our website,<br />
+                please don't hesitate to get in touch with us. Here are a few ways you
+                can reach out.
+            </p>
+            {% if messages %}
+                {% for msg in messages  %}
+                    <div class="alert alert-success shadow-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6"
+                                fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span>{{msg}}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="flex gap-x-20 items-center justify-evenly mt-10">
+                <div class="flex-col animate__animated animate__fadeInLeft">
+                    <div class="flex gap-2 items-center mt-5">
+                        <div class="bg-slate-200 rounded-full px-3 py-1 flex-1">
+                            <i class="fa-solid fa-location-dot text-black text-2xl"></i>
+                        </div>
+                        <div class="flex-2">
+                            <p class="text-2xl text-left text-teal-400 font-bold">Address</p>
+                            <p class="text-1xl">Basundhara Shoping Complex</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 items-center text-start w-1 mt-5">
+                        <div class="bg-slate-200 rounded-full px-2 py-1 flex-1">
+                            <i class="fa-solid fa-phone text-black text-2xl"></i>
+                        </div>
+                        <div class="flex-2">
+                            <p class="text-2xl text-teal-400 font-bold">Phone</p>
+                            <p class="text-1xl">+880175852512</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 items-center text-start w-1 mt-5">
+                        <div class="bg-slate-200 rounded-full px-2 py-1 flex-1">
+                            <i class="fa-regular fa-envelope text-black text-2xl font-bold"></i>
+                        </div>
+                        <div class="flex-2">
+                            <p class="text-2xl text-teal-400 font-bold">Email</p>
+                            <p class="text-1xl">support@metro.rail</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div
+                        class="card flex-shrink-0 w-[400px] shadow-2xl bg-base-100 bg-opacity-90 bg-blend-color-burn animate__animated animate__fadeInRight">
+                        <div class="card-body w-full">
+                            <h1 class="text-4xl text-teal-400 font-bold mb-1">
+                                Send Message
+                            </h1>
+
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="form-control">
+                                    <input type="text" placeholder="Name" class="input input-bordered text-black"
+                                        id="name" name="name" aria-describedby="name" />
+                                </div>
+
+                                <div class="form-control mt-2">
+                                    <input type="email" placeholder="Email" class="input input-bordered text-black"
+                                        id="email" name="email" aria-describedby="emailHelp" />
+                                </div>
+
+                                <div class="form-control mt-2">
+                                    <textarea class="textarea textarea-bordered h-24 text-black"
+                                        placeholder="Your Message Here" id="content" name="content"></textarea>
+                                </div>
+
+                                <div class="form-control mt-6">
+                                    <button type="submit" class="btn btn-success bg-green-600 text-white">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock bodyblock %}
